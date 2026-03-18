@@ -1,0 +1,146 @@
+
+
+.feed-shell {
+  margin: 0 auto;
+  max-width: 780px;
+}
+
+.post-card {
+  background: white;
+  border: 1px solid black;
+  border-radius: 0.9rem;
+  padding: 1rem;
+  box-shadow: 0 14px 36px rgba(23, 31, 48, 0.11);
+}
+
+.post-header,
+.composer,
+.comment-item {
+  display: flex;
+  gap: 0.9rem;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 4rem;
+  min-width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;  
+  background: #3768be;
+  color: #f8fbff;
+  font-weight: 700;
+  font-size: 1.7rem;
+  letter-spacing: 0.02em;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.post-image {
+  display: block;
+  width: 100%;
+  margin: 1rem 0 1.4rem;
+  border-radius: 0.25rem;
+  border: 1px solid #cdd4df;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+  background: #dde4ee;
+}
+
+.post-meta {
+  padding-top: 0.2rem;
+}
+
+.post-title {
+  margin: 0;
+  font-size: 24px;
+  line-height: 1.1;
+  font-weight: 800;
+}
+
+.post-date {
+  margin: 0.1rem 0 0;
+  color: #6b778c;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.comments-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.composer-form {
+  flex: 1;
+  padding-top: 0.15rem;
+}
+
+.author-label {
+  display: inline-block;
+  margin-bottom: 0.45rem;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.composer-controls {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.comment-input {
+  flex: 1;
+  border: 0;
+  border-radius: 0.6rem;
+  background: #d0d7e5;
+  color: #383b3f;
+  padding: 0.8rem 0.95rem;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.comment-input:focus-visible {
+  outline: 2px solid #4a81de;
+  outline-offset: 1px;
+}
+
+.comment-input::placeholder {
+  color: #6b778c;
+}
+
+.comment-button {
+  border: 0;
+  border-radius: 0.6rem;
+  background: #3768be;
+  color: #f8fbff;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 0.8rem 1rem;
+  cursor: pointer;
+  transition: transform 120ms ease, opacity 120ms ease;
+}
+
+.comment-button:hover:not(:disabled) {
+  transform: translateY(-1px);
+}
+
+.comment-button:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.comment-body {
+  padding-top: 0.2rem;
+}
+
+.comment-body h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 800;
+}
+
+.comment-body p {
+  margin: 0.05rem 0 0;
+  font-size: 18px;
+  line-height: 1.25;
+}

@@ -1,0 +1,42 @@
+<div class="feed-shell">
+  <article class="post-card">
+    <header class="post-header">
+      <div class="avatar" aria-hidden="true">C</div>
+      <div class="post-meta">
+        <h1 class="post-title">{{ postAuthor }}</h1>
+        <p class="post-date">{{ postDateLabel }}</p>
+      </div>
+    </header>
+
+    <img class="post-image" [src]="postImageUrl" />
+
+    <section class="comments-section" aria-label="Comments">
+      <div class="composer">
+        <div class="avatar" aria-hidden="true">{{ currentUserInitial }}</div>
+        <form class="composer-form" (ngSubmit)="addComment()" autocomplete="off">
+          <label class="author-label" for="commentInput">{{ currentUserName }}</label>
+          <div class="composer-controls">
+            <input
+              id="commentInput"
+              class="comment-input"
+              type="text"
+              name="comment"
+              [(ngModel)]="draftComment"
+              placeholder="Comment"
+            />
+          </div>
+        </form>
+      </div>
+
+      <div class="comment-item" *ngFor="let comment of comments; trackBy: trackByCommentId">
+        <div class="avatar" aria-hidden="true">{{ comment.authorInitial }}</div>
+        <div class="comment-body">
+          <h2>{{ comment.author }}</h2>
+          <p>{{ comment.message }}</p>
+        </div>
+      </div>
+    </section>
+  </article>
+</div>
+
+<router-outlet></router-outlet>
