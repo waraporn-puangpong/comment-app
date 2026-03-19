@@ -8,7 +8,7 @@ import (
 
 type IService interface {
 	SaveComment(ctx *server.Context, comment models.Comment) error
-	GetComments() ([]*models.Comment, error)
+	GetComments(ctx *server.Context) ([]*models.Comment, error)
 }
 
 type service struct {
@@ -25,6 +25,6 @@ func (s *service) SaveComment(ctx *server.Context, comment models.Comment) error
 	return s.repo.SaveComment(ctx, comment)
 }
 
-func (s *service) GetComments() ([]*models.Comment, error) {
-	return s.repo.GetComments()
+func (s *service) GetComments(ctx *server.Context) ([]*models.Comment, error) {
+	return s.repo.GetComments(ctx)
 }

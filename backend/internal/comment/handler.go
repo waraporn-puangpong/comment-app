@@ -67,7 +67,7 @@ func (h *handler) SaveComment(ctx *server.Context) error {
 // @Failure 500 {object} map[string]string
 // @Router /comments [get]
 func (h *handler) GetComments(ctx *server.Context) error {
-	comments, err := h.service.GetComments()
+	comments, err := h.service.GetComments(ctx)
 	if err != nil {
 		return err
 	}

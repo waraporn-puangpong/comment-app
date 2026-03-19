@@ -13,7 +13,7 @@ import (
 
 type IRepository interface {
 	SaveComment(ctx context.Context, comment models.Comment) error
-	GetComments() ([]*models.Comment, error)
+	GetComments(ctx context.Context) ([]*models.Comment, error)
 }
 
 const (
@@ -40,8 +40,8 @@ func (r *repository) SaveComment(ctx context.Context, comment models.Comment) er
 	return nil
 }
 
-func (r *repository) GetComments() ([]*models.Comment, error) {
-	ctx, cancel := context.WithTimeout(context.Background(), queryTimeout)
+func (r *repository) GetComments(ctx context.Context) ([]*models.Comment, error) {
+	ctx, cancel := context.WithTimeout(ctx, queryTimeout)
 	defer cancel()
 
 	findOptions := options.Find().SetSort(bson.D{{Key: "created_at", Value: -1}})

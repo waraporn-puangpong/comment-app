@@ -41,6 +41,7 @@ func main() {
 
 	// 3. สร้าง HTTP server
 	docs.SwaggerInfo.BasePath = "/api"
+
 	apiServer := server.New()
 
 	// 4. ลงทะเบียน route
