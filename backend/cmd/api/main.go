@@ -11,7 +11,7 @@ import (
 )
 
 const (
-	defaultMongoURI = "mongodb://localhost:27017/?readPreference=primary&directConnection=true"
+	defaultMongoURI = ""
 	defaultDBName   = "comment-app"
 	defaultHTTPAddr = ":8080"
 )
