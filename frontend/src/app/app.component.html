@@ -10,9 +10,9 @@
 
     <img class="post-image" [src]="postImageUrl" />
 
-    <section class="comments-section" aria-label="Comments">
+    <section class="comments-section">
       <div class="composer">
-        <div class="avatar" aria-hidden="true">{{ currentUserInitial }}</div>
+        <div class="avatar">{{ currentUserInitial }}</div>
         <form class="composer-form" (ngSubmit)="addComment()">
           <label class="author-label" for="commentInput">{{ currentUserName }}</label>
           <div class="composer-controls">
