@@ -1,11 +1,7 @@
 import { Component } from '@angular/core';
+import { CreateCommentRequest, CommentApiModel } from './model/comment';
+import { ApiService } from './service/api.service';
 
-type CommentItem = {
-  id: number;
-  author: string;
-  authorInitial: string;
-  message: string;
-};
 
 @Component({
   selector: 'app-root',
@@ -13,44 +9,57 @@ type CommentItem = {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  ngOnInit() {
+    this.getComments();
+  }
+
+  title = 'frontend';
+  comments: CommentApiModel[] = [];
+  constructor(private readonly apiService: ApiService) { }
+
   readonly postAuthor = 'Change can';
+  readonly postImageId = 'post-1';
   readonly postDateLabel = '16 October 2021 16:00';
   readonly postImageUrl = 'assets/images/images.png';
   readonly currentUserName = 'Blend 285';
   readonly currentUserInitial = 'B';
 
   draftComment = '';
-  comments: CommentItem[] = [
-    {
-      id: 1,
-      author: 'Blend 285',
-      authorInitial: 'B',
-      message: 'Welcome to my comment section.'
-    }
-  ];
-
-  private nextCommentId = 2;
-  title = 'frontend';
-
   addComment(): void {
-    const message = this.draftComment.trim();
-    if (!message) {
-      return;
-    }
+    // เอา message ที่ได้จาก พิมพ์
+    const message = this.draftComment
 
-    this.comments = [
-      ...this.comments,
-      {
-        id: this.nextCommentId++,
-        author: this.currentUserName,
-        authorInitial: this.currentUserInitial,
-        message
+    // mapp data
+    const payload: CreateCommentRequest = {
+      imageId: this.postImageId,
+      username: this.currentUserName,
+      content: message,
+      createdAt: new Date()
+    };
+
+    this.apiService.saveComment(payload).subscribe({
+      //คืน response จาก api มาเก็บใน savedComment
+      next: (savedComment) => {
+        this.draftComment = '';
+        this.getComments();
+      },
+      error: (err: unknown) => {
+        console.error('Failed to save comment', err);
       }
-    ];
-    this.draftComment = '';
+    });
   }
 
-  trackByCommentId(_: number, comment: CommentItem): number {
-    return comment.id;
+  getComments() {
+    this.apiService.getComments().subscribe({
+      next: (res) => {
+        this.comments = res;
+      },
+      error: (err: unknown) => {
+        console.error('Failed to retrieve comments', err);
+      }
+    });
   }
+
+
 }

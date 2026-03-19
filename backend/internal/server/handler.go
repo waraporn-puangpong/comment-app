@@ -12,6 +12,7 @@ type Context struct {
 
 type HandlerFunc func(*Context) error 
 
+// handle ช่วยให้ handler แต่ละตัวโฟกัสแค่ business logic แล้ว return error ได้เลย ส่วนการตอบ 500 ให้ client จัดการตรงนี้จุดเดียว.
 func (s *Server) handle(ctx *gin.Context, handlerFn HandlerFunc) { 
 	c := &Context{Context: ctx} // แปลง gin.Context เป็น Context
 

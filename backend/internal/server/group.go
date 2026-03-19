@@ -8,6 +8,7 @@ type Group struct {
 }
 
 func (g Group) GET(path string, handlerFn HandlerFunc, middlewares ...gin.HandlerFunc) { 
+	// กำหนด Route (Endpoint)
 	handlers := append(
 		middlewares,
 		func(ctx *gin.Context) {
